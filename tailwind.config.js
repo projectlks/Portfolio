@@ -23,6 +23,8 @@ export default {
     },
     fontFamily: {
       poppins: ['Poppins', 'sans-serif'],
+      Tourney : ['Tourney', 'sans-serif'],
+      Mate : ['MateusBold',  'sans-serif' ]
     },
   },
   plugins: [],

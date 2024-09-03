@@ -28,6 +28,9 @@ export default {
       Nunito : ["Nunito Sans", 'sans-serif'] ,
       Space : ['Space Grotesk', 'sans-serif']
     },
+    colors: {
+      main : '#100259'
+    }
   },
   plugins: [],
 }

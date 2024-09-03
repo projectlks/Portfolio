@@ -24,7 +24,9 @@ export default {
     fontFamily: {
       poppins: ['Poppins', 'sans-serif'],
       Tourney : ['Tourney', 'sans-serif'],
-      Mate : ['MateusBold',  'sans-serif' ]
+      Mate : ['MateusBold',  'sans-serif' ],
+      Nunito : ["Nunito Sans", 'sans-serif'] ,
+      Space : ['Space Grotesk', 'sans-serif']
     },
   },
   plugins: [],

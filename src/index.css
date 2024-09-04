@@ -7,3 +7,26 @@
     font-family: 'MateusBold';
     src: url(./assets/fonts/Mate.ttf);
 }
+
+
+/* Custom Scrollbar Thumb */
+body::-webkit-scrollbar-thumb {
+    background-color: #100259; /* Black background for the thumb */
+    border-radius: 10px;    /* Rounded corners */
+    border: 2px solid #444; /* Optional border to add some padding around the thumb */
+}
+
+
+
+
+
+body::-webkit-scrollbar-track {
+    background-color: transparent; 
+    border-radius: 10px;    
+}
+
+/* General Scrollbar settings */
+body::-webkit-scrollbar {
+    width: 12px;              
+    height: 12px;              
+}

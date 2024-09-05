@@ -28,6 +28,15 @@ export default {
       Nunito : ["Nunito Sans", 'sans-serif'] ,
       Space : ['Space Grotesk', 'sans-serif']
     },
+    screens: {
+      'xs': '320px',   // Custom extra-small breakpoint
+      'middle': '400px',
+      'sm': '420px',   // Custom small breakpoint
+      'md': '768px',   // Medium breakpoint
+      'lg': '1024px',  // Large breakpoint
+      'xl': '1280px',  // Extra-large breakpoint
+      '2xl': '1600px', // 2xl breakpoint
+    },
   
   },
   plugins: [],

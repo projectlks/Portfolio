@@ -28,12 +28,12 @@ const Home: React.FC = () => {
       <Header />
 
       {/* Main Content Section */}
-      <div className=" flex flex-col items-center  justify-center bg-blue-50 p-4 md:p-8">
+      <div className=" flex flex-col items-center  justify-center bg-blue-50">
         {/* Hero Section */}
-        <div className="flex flex-col-reverse xl:flex-row   w-full md:w-[90%] mx-auto px-4 xl:px-8 py-6 md:py-12 items-center justify-between">
+        <div className="flex flex-col-reverse xl:flex-row w-full md:w-[90%] mx-auto px-4 xl:px-8 py-6 md:py-12 xl:items-center items-center justify-between">
           {/* Text Content */}
           <div className="w-full  xl:w-1/2 mb-6 md:mb-0">
-            <header className="md:space-y-6 space-y-3 text-4xl md:text-5xl xl:text-7xl font-Space mb-6">
+          <header className="md:space-y-6 space-y-3 text-[20px] middle:text-[32px] xs:text-2xl sm:text-4xl md:text-6xl  2xl:text-7xl font-Space mb-6">
               <h1 className="flex space-x-4 md:space-x-6 text-gray-800">
                 <span className="font-semibold">Hello, I'm</span>
                 <span className="text-[#100259] font-extrabold">Linkar Soe.</span>
@@ -50,16 +50,17 @@ const Home: React.FC = () => {
               </p>
             </header>
 
-            <div className="text-base sm:text-lg text-gray-700 rounded-md">
-              <p className='text-balance'>
-                Welcome to my portfolio! I’m Linkar Soe, a passionate Frontend Developer based in Myanmar. With a keen eye for design and a love for creating engaging user experiences, I specialize in crafting beautiful, responsive websites and applications. Explore my work to see how I blend creativity with technology to bring ideas to life. If you have a project in mind or just want to connect, feel free to reach out!
-              </p>
-            </div>
+            <div className="bg-[#100259] shadow-md text-base sm:text-lg text-gray-100 p-4 md:p-6 lg:p-8 rounded-lg">
+  <p className="leading-relaxed">
+    Welcome to my portfolio! I’m Linkar Soe, a passionate Frontend Developer based in Myanmar. With a keen eye for design and a love for creating engaging user experiences, I specialize in crafting beautiful, responsive websites and applications. Explore my work to see how I blend creativity with technology to bring ideas to life. If you have a project in mind or just want to connect, feel free to reach out!
+  </p>
+</div>
+
           </div>
 
           {/* Image Section */}
-          <div className="w-full aspect-square md:w-2/3 xl:w-1/2 flex justify-center">
-            <img src={device} alt="Frontend Developer Icon" className="w-full max-w-md md:max-w-full object-cover" />
+          <div className="w-full aspect-square md:w-2/3 xl:w-1/2  p-4 md:p-8 flex justify-center">
+            <img src={device} alt="Frontend Developer Icon" className="w-full  object-cover" />
           </div>
         </div>
 

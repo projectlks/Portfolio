@@ -8,6 +8,9 @@
     src: url(./assets/fonts/Mate.ttf);
 }
 
+*{
+    scroll-behavior: smooth;
+}
 
 /* Custom Scrollbar Thumb */
 body::-webkit-scrollbar-thumb {

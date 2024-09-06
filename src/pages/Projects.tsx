@@ -7,7 +7,8 @@ const projects = [
 
 const Projects: React.FC = () => {
   return (
-    <div className="p-8">
+
+    <div className="p-8 ">
       <h2 className="text-3xl font-semibold">My Projects</h2>
       <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
         {projects.map((project, index) => (
@@ -18,6 +19,7 @@ const Projects: React.FC = () => {
         ))}
       </div>
     </div>
+
   );
 };
 

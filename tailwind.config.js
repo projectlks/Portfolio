@@ -13,7 +13,7 @@ export default {
       keyframes: {
         type: {
           '0%': { width: '0' }, 
-          '100%': { width: '19ch' },
+          '100%': { width: '33ch' },
         },
         blink: {
           '0%, 100%': { borderColor: 'transparent' }, 
@@ -31,7 +31,8 @@ export default {
     screens: {
       'xs': '320px',   // Custom extra-small breakpoint
       'middle': '400px',
-      'sm': '420px',   // Custom small breakpoint
+      'sm': '420px',
+      '500' : '520px',   // Custom small breakpoint
       'md': '768px',   // Medium breakpoint
       'lg': '1024px',  // Large breakpoint
       'xl': '1280px',  // Extra-large breakpoint

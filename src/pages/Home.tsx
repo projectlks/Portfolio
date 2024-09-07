@@ -68,7 +68,7 @@ const Home: React.FC = () => {
                 data-aos="zoom-out"
                 data-aos-delay="1500"
               >
-                Welcome to my portfolio! I’m Linkar Soe, a passionate Frontend
+                Welcome to my portfolio! I'm Linkar Soe, a passionate Frontend
                 Developer based in Myanmar. With a keen eye for design and a love
                 for creating engaging user experiences, I specialize in crafting
                 beautiful, responsive websites and applications. Explore my work

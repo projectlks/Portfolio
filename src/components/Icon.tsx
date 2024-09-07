@@ -16,7 +16,7 @@ export default function Icon({ img, className }: Props) {
   return (
     <div
       data-aos="zoom-in"
-      className="w-[80%] rounded-2xl shadow-md md:bg-transparent md:shadow-none bg-blue-200 flex justify-center aspect-square items-center "
+      className="w-[80%] space-y-6 rounded-2xl shadow-md md:bg-transparent md:shadow-none bg-[#0503032e] flex flex-col justify-center aspect-square items-center "
     >
       <div className="w-[100px] md:w-[125px] aspect-square flex justify-center items-center bg-transparent relative rounded-md cursor-pointer transition-all group">
         {/* Background color span */}
@@ -29,6 +29,7 @@ export default function Icon({ img, className }: Props) {
           {img}
         </span>
       </div>
+      {/* <h1 className=" text-4xl text-[#fff] ">Html</h1> */}
     </div>
   );
 }

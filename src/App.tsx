@@ -7,6 +7,7 @@ import Projects from "./pages/Projects";
 import Skills from "./pages/Skills";
 import up from "./assets/svg/up.svg";
 
+
 export default function App() {
   return (
     <>

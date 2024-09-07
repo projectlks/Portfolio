@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useScreenWidth } from "../hooks/useScreenWidth";
 import desktop from "../assets/svg/desktop.svg";
 import mobile from "../assets/svg/mobile.svg";
 import tablet from "../assets/svg/tablet.svg";
 import Aos from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
+
+import DesktopIcon from '../components/DesktopIcon'
+import { ThemeContext } from '../context/useTheme'
 
 const Home: React.FC = () => {
   const width = useScreenWidth();
@@ -31,10 +34,27 @@ const Home: React.FC = () => {
 
   }, []);
 
+  const context = useContext(ThemeContext);
+
+  // Ensure the context is not undefined
+  if (context === undefined) {
+    throw new Error('ThemeContext must be used within a ThemeContextProvider');
+  }
+
+  const { theme: contextTheme } = context;
+  const [localTheme, setLocalTheme] = useState<string>(contextTheme);
+
+  useEffect(() => {
+    setLocalTheme(contextTheme);
+  }, [contextTheme]);
+
+
+
+
   return (
-    <section id="home">
+    <section id="home" className={`${localTheme === 'light' ? '' : 'bg-black'}`}>
       {/* Main Content Section */}
-      <div className="flex flex-col items-center justify-center bg-blue-50">
+      <div className="flex flex-col items-center justify-center ">
         {/* Hero Section */}
         <div className="flex flex-col-reverse xl:flex-row w-full md:w-[90%] mx-auto px-4 xl:px-8 py-6 md:py-12 xl:items-center items-center justify-between">
           {/* Text Content */}
@@ -47,7 +67,7 @@ const Home: React.FC = () => {
               <h1 className="flex space-x-4 md:space-x-6 text-gray-800">
                 <span className="font-semibold">Hello, I'm</span>
                 <span className="text-[#100259] font-extrabold">
-                  Linkar Soe.
+                  Linkar Soe. 
                 </span>
               </h1>
 
@@ -86,9 +106,12 @@ const Home: React.FC = () => {
           >
             <img
               src={device}
-              alt="Frontend Developer Icon"
-              className="w-full object-cover"
+              alt="Frontend Developer Icon "
+              className="w-full hidden object-cover"
             />
+            <i className="text-gray-300 rounded-xl">
+              <DesktopIcon/>
+            </i>
           </div>
         </div>
 

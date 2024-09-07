@@ -26,7 +26,8 @@ export default function Icons() {
   }, []);
 
   return (
-    <section className="bg-[#100259]">
+    <section className=' bg-gradient-to-tr w-full overflow-hidden from-[#100259]  to-[#1a1a7a] '>
+
     <div id="skills" className="mt-8 min-h-screen py-[100px]  md:w-[80%] select-none xl:w-2/3 mx-auto w-full ">
       <h2
         data-aos="zoom-out"

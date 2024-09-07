@@ -2,7 +2,7 @@ import React from 'react';
 
 const Contact: React.FC = () => {
   return (
-    <section id="contact-me" className="p-8 bg-gradient-to-r ">
+    <section id="contact-me" className="p-8 min-h-screen overflow-hidden flex flex-col  justify-center bg-gradient-to-r ">
       <h2 className="text-3xl font-semibold text-center mb-4">Contact Me</h2>
       <p className="text-lg text-center mb-6">Feel free to reach out via email or through the contact form below.</p>
       <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">

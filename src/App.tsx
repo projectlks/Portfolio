@@ -7,7 +7,6 @@ import Projects from "./pages/Projects";
 import Skills from "./pages/Skills";
 import up from "./assets/svg/up.svg";
 
-
 export default function App() {
   return (
     <>
@@ -17,9 +16,9 @@ export default function App() {
       <Skills />
 
       {/* bg-gradient-to-tr from-[#100259]  to-[#1a1a7a] */}
-     
-        <About />
-        <Projects />
+
+      <About />
+      <Projects />
 
       <Contact />
       <Footer />

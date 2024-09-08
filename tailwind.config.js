@@ -9,6 +9,9 @@ export default {
       animation: {
         'type': 'type 2s steps(21) forwards',
         'blink': 'blink 1s step-end infinite', // Add the blink animation
+
+        'slide-left': 'slideLeft 0.5s ease-in-out',
+        'slide-right': 'slideRight 0.5s ease-in-out',
       },
       keyframes: {
         type: {

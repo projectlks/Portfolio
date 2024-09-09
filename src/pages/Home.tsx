@@ -7,7 +7,15 @@ import DesktopIcon from "../assets/svg/DesktopIcon";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
-import { ThemeContext } from "../context/useTheme";
+import { ThemeContext } from "../context/ThemeContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+
+  faFacebookSquare,
+  faInstagram,
+  faTelegramPlane,
+
+} from "@fortawesome/free-brands-svg-icons";
 
 const Home: React.FC = () => {
   const width = useScreenWidth();
@@ -44,10 +52,12 @@ const Home: React.FC = () => {
     setLocalTheme(contextTheme);
   }, [contextTheme]);
 
-  const textColor =
-    localTheme === "light"
-      ? "text-[#100259] font-extrabold"
-      : "text-[#f0a500] font-extrabold";
+  const textColor = `
+   ${
+     localTheme === "light"
+       ? "text-[#100259] font-extrabold"
+       : "text-[#f0a500] font-extrabold"
+   } transition-all duration-300 `;
 
   return (
     <section
@@ -59,9 +69,9 @@ const Home: React.FC = () => {
       }`}
     >
       {/* Main Content Section */}
-      <div className="flex flex-col items-center min-h-screen justify-center">
+      <div className="flex flex-col  items-center min-h-screen justify-center">
         {/* Hero Section */}
-        <div className="flex flex-col-reverse h-full  xl:flex-row w-full md:w-[90%] mx-auto px-4 xl:px-8 py-6 xl:items-center items-center justify-between">
+        <div className="flex flex-col-reverse    xl:flex-row w-full md:w-[90%] mx-auto px-4 xl:px-8  xl:items-center items-center justify-between">
           {/* Text Content */}
           <div
             data-aos="flip-left"
@@ -107,7 +117,7 @@ const Home: React.FC = () => {
           {/* Image Section */}
           <div
             data-aos="zoom-in"
-            className="w-full aspect-square md:w-2/3 xl:w-1/2 p-4 md:p-8 flex justify-center"
+            className="w-full  aspect-square md:w-2/3 xl:w-1/2 p-4 md:p-8 flex justify-center"
           >
             <i
               className={`transition-all ${
@@ -120,23 +130,43 @@ const Home: React.FC = () => {
         </div>
 
         {/* Social Media Links Section */}
-        <div className="items-center flex justify-between absolute bottom-0 space-x-4 w-[80%] mt-8">
-          {["Facebook", "GitHub", "Instagram"].map((name, index) => (
-            <span
-              key={index}
-              className={`w-[70px] flex justify-center items-center aspect-square rounded-md ${
-                index === 0
-                  ? "bg-blue-400"
-                  : index === 1
-                  ? "bg-yellow-400"
-                  : "bg-green-400"
-              }`}
-            >
-              <h1 className="text-center">{name}</h1>
-            </span>
-          ))}
-          <div className="w-[70%] h-1 bg-[#100259]"></div>
-        </div>
+        <div className="items-center flex justify-between mb-10 xl:mb-20 space-x-4 w-[80%]">
+      <span
+        className={`xl:text-[60px] text-[40px] transition-all duration-300 flex justify-evenly ${
+          localTheme === 'light'
+            ? 'text-[#100259]'
+            : 'text-blue-100' 
+        } w-full xl:w-[30%]`}
+      >
+        <a href="https://www.facebook.com/yourprofile" target="_blank" rel="noopener noreferrer">
+          <FontAwesomeIcon
+             icon={faFacebookSquare}
+            className={`hover:text-[#1877F2]`}
+          />
+        
+        </a>
+        <a href="https://t.me/Mglinkar" target="_blank" rel="noopener noreferrer">
+          <FontAwesomeIcon
+              icon={faTelegramPlane}
+            className={`hover:text-[#0088cc] `}
+          />
+        </a>
+        <a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener noreferrer">
+          <FontAwesomeIcon
+            icon={faInstagram}
+            className={`hover:text-[#C13584]`}
+
+          />
+        </a>
+
+
+      </span>
+      <div
+        className={`xl:w-[70%] hidden xl:flex h-1 ${
+          localTheme === 'light' ? 'bg-[#100259]' : 'bg-blue-100'
+        }`}
+      ></div>
+    </div>
       </div>
     </section>
   );

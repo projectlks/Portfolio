@@ -2,9 +2,20 @@ import React, { useContext, useEffect, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import Button from "@mui/material/Button";
 import DownloadIcon from "@mui/icons-material/Download";
-import dark from "../assets/svg/dark.svg";
-import light from "../assets/svg/light.svg";
-import { ThemeContext } from "../context/useTheme"; // Adjust the import path as needed
+
+import { ThemeContext } from "../context/ThemeContext"; 
+import LightIcon from "../assets/svg/LightIcon";
+import DarkIcon from "../assets/svg/DarkIcon";
+import linkar from '../assets/pdf/LinkarSoe.pdf'
+
+const handleDownload = () => {
+  const link = document.createElement("a");
+  link.href = linkar; // Path to your resume file
+  link.setAttribute("download", "resume.pdf"); // Set the file name for download
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 
 const Header: React.FC = () => {
   const context = useContext(ThemeContext);
@@ -28,11 +39,12 @@ const Header: React.FC = () => {
         ${
           localTheme === "light"
             ? "bg-gradient-to-tr from-blue-100 to-blue-300 text-black"
-            : "bg-gradient-to-tr from-gray-800 to-gray-900 text-white"
+            : "bg-gradient-to-tr from-gray-900 shadow-sm shadow-white to-black text-white"
         }`}
       >
+        {/* "bg-gradient-to-tr from-gray-800 to-gray-900 text-white" */}
         <span className="text-[4rem]">Icon</span>
-        <ul className="xl:flex hidden space-x-10 font-bold">
+        <ul className="xl:flex hidden space-x-8 text-xl font-bold">
           {["About Me", "Skills", "Projects", "Contact Me"].map((section) => (
             <li key={section}>
               <a
@@ -50,58 +62,66 @@ const Header: React.FC = () => {
           ))}
         </ul>
         <span className="space-x-6 hidden xl:flex items-center">
-          <span className="flex items-center space-x-4">
+          {/* Theme Icon and button */}
+          <span className="flex  items-center space-x-3">
             <i
               className={`${
                 localTheme === "light" ? "text-[#100259]" : "text-gray-300"
-              } h-full`}
+              }  h-[30px] `}
             >
-              <img src={light} alt="Light Mode" className="h-full w-6" />
+              <LightIcon />
             </i>
 
             <button
               onClick={changeTheme}
-              className={`relative w-[60px] border h-[30px] rounded-full p-3 transition-all duration-300 ease-in-out 
+              className={`relative w-[60px] border h-[30px]  rounded-full p-1 transition-all duration-300 ease-in-out 
                 ${
                   localTheme === "light"
-                    ? "bg-blue-200 border-blue-300"
+                    ? "bg-blue-200 border-[#100259]"
                     : "bg-gray-700 border-gray-600"
                 }`}
             >
-              <span
-                className={`absolute top-1/2 transform -translate-y-1/2 h-[80%] aspect-square rounded-full bg-[#100259] transition-transform duration-500 ease-in-out 
+              <div className=" h-full w-full relative">
+                <span
+                  className={`absolute top-1/2 transform -translate-y-1/2 h-full aspect-square rounded-full bg-[#100259] transition-transform duration-500 ease-in-out 
                   ${
                     localTheme === "light"
-                      ? "left-2 animate-slide-left"
-                      : "right-2 animate-slide-right"
+                      ? "left-0 animate-slide-left "
+                      : "right-0 animate-slide-right bg-slate-300"
                   }`}
-              ></span>
+                ></span>
+              </div>
             </button>
 
-            <i className="h-full">
-              <img src={dark} alt="Dark Mode" className="h-full w-6" />
+            <i
+              className={`${
+                localTheme === "light" ? "text-[#100259]" : "text-gray-300"
+              }  h-[30px] `}
+            >
+              <DarkIcon />
             </i>
           </span>
 
+          {/* resume button */}
           <Button
             variant="contained"
             endIcon={<DownloadIcon />}
             sx={{
               display: { xs: "none", sm: "none", md: "none", xl: "flex" },
-              backgroundColor: localTheme === "light" ? "#100259" : "#fafafa",
-              color: localTheme === "light" ? "white" : "#333",
+
+              backgroundColor: "#100259",
+              color: "white",
               padding: "10px 16px",
               borderRadius: "8px",
               fontWeight: "bold",
               textTransform: "uppercase",
-              "&:hover": {
-                backgroundColor: localTheme === "light" ? "#08002b" : "#e0e0e0",
-              },
-              "&:active": {
-                backgroundColor: localTheme === "light" ? "#090a14" : "#cccccc",
-              },
+              "&:hover": "#08002b",
+              "&:active": "#090a14",
+
               transition: "all 0.3s ease-in-out",
             }}
+
+            onClick={handleDownload}
           >
             Resume
           </Button>

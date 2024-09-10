@@ -27,9 +27,11 @@ export const ThemeContextProvider: FC<{ children: ReactNode }> = ({ children }) 
   useEffect(() => {
     // Change the body background color based on the theme
     if (theme === "light") {
-      document.body.style.backgroundColor = "#ebf8ff"; // Light theme color
+      document.body.classList.add("from-blue-200", "to-blue-100");
+      document.body.classList.remove("from-black", "to-gray-900");
     } else {
-      document.body.style.backgroundColor = "#1a202c"; // Dark theme color
+      document.body.classList.add("from-black", "to-gray-900");
+      document.body.classList.remove("from-blue-200", "to-blue-100");
     }
   }, [theme]);
 

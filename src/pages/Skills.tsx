@@ -1,14 +1,10 @@
-import {
-  faCss3Alt,
-  faGithub,
-  faHtml5,
-  faReact,
-} from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import git from "../assets/git.png";
-import js from "../assets/js.png";
-import ts from "../assets/ts.png";
+import react from "../assets/png/react.png";
+import github from "../assets/png/github.png";
+import html from "../assets/png/html.png";
+import css from "../assets/png/css.png";
+import git from "../assets/png/git.png";
+import js from "../assets/png/js.png";
+import ts from "../assets/png/ts.png";
 import tailwind from "../assets/tailwind.png";
 import Icon from "../components/Icon";
 import { useEffect } from "react";
@@ -26,105 +22,98 @@ export default function Icons() {
   }, []);
 
   return (
-    <section className=' bg-gradient-to-tr w-full overflow-hidden from-[#100259]  to-[#1a1a7a] '>
-
-    <div id="skills" className="mt-8 min-h-screen py-[100px]  md:w-[80%] select-none xl:w-2/3 mx-auto w-full ">
-      <h2
-        data-aos="zoom-out"
-        className="text-3xl xl:text-7xl font-semibold font-poppins mb-20 text-center text-[#fff] flex items-center justify-center space-x-3"
+    <section className=" bg-gradient-to-tr w-full overflow-hidden from-[#100259]  to-[#1a1a7a] ">
+      <div
+        id="skills"
+        className="mt-8 min-h-screen py-[100px]  md:w-[80%] select-none xl:w-2/3 mx-auto w-full "
       >
-        <span>My</span>
-        <span className="font-extrabold">Skills</span>
-      </h2>
-      <div className="grid grid-cols-2  md:grid-cols-3 xl:grid-cols-4 transition-all justify-items-center md:gap-x-6 gap-y-10">
-        {/* HTML Icon */}
-        <Icon
-          img={
-            <FontAwesomeIcon
-              icon={faHtml5}
-              data-aos="fade-down"
-              className="text-7xl md:text-8xl text-white"
-            />
-          }
-          className="bg-[#f06529]"
-        />
+        <h2
+          data-aos="zoom-out"
+          className="text-3xl xl:text-7xl font-semibold font-poppins mb-20 text-center text-[#fff] flex items-center justify-center space-x-3"
+        >
+          <span>My</span>
+          <span className="font-extrabold">Skills</span>
+        </h2>
+        <div className="grid grid-cols-2  md:grid-cols-3 xl:grid-cols-4 transition-all justify-items-center md:gap-x-6 gap-y-10">
+          {/* HTML Icon */}
 
-        {/* CSS Icon */}
-        <Icon
-          img={
-            <FontAwesomeIcon
-              icon={faCss3Alt}
-              className="text-7xl md:text-8xl text-white"
-            />
-          }
-          className="bg-[#264de4]"
-        />
+          <Icon
+            img={<img src={html} alt="HTML Icon" className="w-[70%]" />}
+            className="bg-[#f06529]"
+            name="HTML"
+          />
 
-        {/* JavaScript Icon */}
-        <Icon
-          img={<img src={js} alt="JavaScript Icon" />}
-          className="bg-[#f7e018]"
-        />
+          {/* CSS Icon */}
+          <Icon
+            img={<img src={css} alt="CSS Icon" className="w-[70%]" />}
+            className="bg-[#264de4]"
+            name="CSS"
+          />
 
-        {/* React Icon */}
-        <Icon
-          img={
-            <FontAwesomeIcon
-              icon={faReact}
-              className="text-7xl md:text-8xl text-[#61dafb]"
-            />
-          }
-          className="bg-[#ffffff] border border-[#9c9c9c77]"
-        />
+          {/* JavaScript Icon */}
+          <Icon
+            img={<img src={js} alt="JavaScript Icon" />}
+            className="bg-[#f7e018]"
+            name="JavaScript"
+          />
 
-        {/* Git Icon */}
-        {/* <Icon
-          img={<img src={git} alt="Git Icon" className="w-full h-full" />}
-          className="bg-[#f1502f] rotate-45 origin-bottom-right"
-        /> */}
-           <div
-      data-aos="zoom-in"
-      className="w-[80%] rounded-2xl shadow-md md:bg-transparent md:shadow-none bg-[#0503032e] flex justify-center aspect-square items-center "
-    >
+          {/* React Icon */}
+          <Icon
+            img={<img src={react} alt="React Icon" />}
+            className="bg-[#ffffff]"
+            name="React"
+          />
 
- <div className="flex aspect-square justify-center items-center ">
-<div className="w-[100px] md:w-[125px] origin-bottom-right rotate-45 aspect-square flex justify-center items-center relative -left-1/2 -bottom-1/3 mx-auto rounded-md cursor-pointer transition-all group">
-  <span className="absolute inset-0 bg-[#f1502f]  origin-right group-hover:rotate-[45deg] rounded-xl  transition-transform duration-300 ease-in-out transform "></span>
-  <span className="relative flex justify-center items-center origin-center  w-full h-full border-2 border-[#9c9c9c77] duration-300 group-hover:bg-[#9c9c9c77] group-hover:backdrop-blur-sm rounded-xl">
-    <img
-      src={git}
-      alt="gitIcon"
-      className="w-full -rotate-45 h-full"
-    />
-  </span>
-</div>
-</div> 
-</div> 
+          {/* Git Icon */}
+          <div
+            data-aos="zoom-in"
+            className="w-[80%] rounded-2xl shadow-md md:bg-transparent md:shadow-none bg-[#0503032e] flex justify-center aspect-square items-center "
+          >
+            <div className="flex aspect-square justify-center items-center ">
+              <div className="w-[100px] md:w-[125px] origin-bottom-right rotate-45 aspect-square flex justify-center items-center relative -left-1/2 -bottom-1/3 mx-auto rounded-md cursor-pointer transition-all group">
+                <span className="absolute inset-0 bg-[#f1502f] origin-right group-hover:rotate-[45deg] rounded-xl transition-transform duration-300 ease-in-out transform "></span>
+                <span className="relative flex justify-center items-center origin-center w-full h-full border-2 border-[#9c9c9c77] duration-300 group-hover:bg-[#9c9c9c77] group-hover:backdrop-blur-sm rounded-xl">
+                  <img
+                    src={git}
+                    alt="Git Icon"
+                    className="w-full -rotate-45 h-full"
+                  />
+                </span>
+              </div>
+            </div>
+          </div>
 
-        {/* GitHub Icon */}
-        <Icon
-          img={
-            <FontAwesomeIcon
-              icon={faGithub}
-              className="text-7xl md:text-8xl text-white"
-            />
-          }
-          className="bg-[#333]"
-        />
+          {/* Git Icon */}
+          <Icon
+            img={<img src={git} alt="Git Icon" className="w-[70%]" />}
+            className="bg-[#000]"
+            name="Git"
+          />
 
-        {/* TypeScript Icon */}
-        <Icon
-          img={<img src={ts} alt="TypeScript Icon" />}
-          className="bg-[#007acc]"
-        />
+          {/* GitHub Icon */}
+          <Icon
+            img={<img src={github} alt="GitHub Icon" className="w-[70%]" />}
+            className="bg-[#000]"
+            name="GitHub"
+          />
 
-        {/* Tailwind CSS Icon */}
-        <Icon
-          img={<img src={tailwind} alt="Tailwind CSS Icon" className="w-4/5" />}
-          className="bg-[#f9fafb] border border-[#9c9c9c77]"
-        />
+          {/* TypeScript Icon */}
+          <Icon
+            img={<img src={ts} alt="TypeScript Icon" />}
+            className="bg-[#007acc]"
+            name="TypeScript"
+          />
+
+          {/* Tailwind CSS Icon */}
+          <Icon
+            img={
+              <img src={tailwind} alt="Tailwind CSS Icon" className="w-4/5" />
+            }
+            className="bg-[#f9fafb] border border-[#9c9c9c77]"
+            name="Tailwind CSS"
+          />
+        </div>
       </div>
-    </div>
     </section>
   );
 }
@@ -140,6 +129,26 @@ export default function Icons() {
       className="w-full -rotate-45 h-full"
     />
   </span>
+</div>
+</div> */
+}
+
+{
+  /* <div
+data-aos="zoom-in"
+className="w-[80%] rounded-2xl shadow-md md:bg-transparent md:shadow-none bg-[#0503032e] flex justify-center aspect-square items-center "
+>
+<div className="flex aspect-square justify-center items-center ">
+  <div className="w-[100px] md:w-[125px] origin-bottom-right rotate-45 aspect-square flex justify-center items-center relative -left-1/2 -bottom-1/3 mx-auto rounded-md cursor-pointer transition-all group">
+    <span className="absolute inset-0 bg-[#f1502f]  origin-right group-hover:rotate-[45deg] rounded-xl  transition-transform duration-300 ease-in-out transform "></span>
+    <span className="relative flex justify-center items-center origin-center  w-full h-full border-2 border-[#9c9c9c77] duration-300 group-hover:bg-[#9c9c9c77] group-hover:backdrop-blur-sm rounded-xl">
+      <img
+        src={git}
+        alt="gitIcon"
+        className="w-full -rotate-45 h-full"
+      />
+    </span>
+  </div>
 </div>
 </div> */
 }

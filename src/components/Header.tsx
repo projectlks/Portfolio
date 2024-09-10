@@ -1,57 +1,96 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import Button from "@mui/material/Button";
 import DownloadIcon from "@mui/icons-material/Download";
-
-import { ThemeContext } from "../context/ThemeContext"; 
 import LightIcon from "../assets/svg/LightIcon";
 import DarkIcon from "../assets/svg/DarkIcon";
-import linkar from '../assets/pdf/LinkarSoe.pdf'
+import linkar from "../assets/pdf/LinkarSoe.pdf";
+import { useTheme } from "../hooks/useTheme";
 
 const handleDownload = () => {
   const link = document.createElement("a");
-  link.href = linkar; // Path to your resume file
-  link.setAttribute("download", "resume.pdf"); // Set the file name for download
+  link.href = linkar;
+  link.setAttribute("download", "resume.pdf");
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
 };
 
 const Header: React.FC = () => {
-  const context = useContext(ThemeContext);
+  const { theme, changeTheme } = useTheme();
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  if (context === undefined) {
-    throw new Error("ThemeContext must be used within a ThemeContextProvider");
-  }
-
-  const { changeTheme } = context;
-  const { theme: contextTheme } = context;
-  const [localTheme, setLocalTheme] = useState<string>(contextTheme);
-
-  useEffect(() => {
-    setLocalTheme(contextTheme);
-  }, [contextTheme]);
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
   return (
     <section className="w-full relative">
       <nav
-        className={`flex justify-between items-center static xl:fixed top-3 transition-all left-0 right-0 shadow  rounded-lg z-50 text-2xl font-poppins w-[95%] md:w-[90%] mx-auto px-6 md:px-10 py-6 
+        className={`flex justify-between items-center static xl:fixed top-4 transition-all left-0 right-0 shadow-md rounded-lg z-50 text-lg font-poppins w-[95%] md:w-[90%] mx-auto px-6 py-5
         ${
-          localTheme === "light"
-            ? "bg-gradient-to-tr from-blue-100 to-blue-300 text-black"
-            : "bg-gradient-to-tr from-gray-900 shadow-sm shadow-white to-black text-white"
+          theme === "light"
+            ? "bg-gradient-to-tr from-blue-100 to-blue-300 text-black border border-blue-900 border-opacity-80 "
+            : "bg-gradient-to-tr from-gray-900 shadow-md to-black text-white border border-blue-900 border-opacity-80"
         }`}
       >
-        {/* "bg-gradient-to-tr from-gray-800 to-gray-900 text-white" */}
-        <span className="text-[4rem]">Icon</span>
-        <ul className="xl:flex hidden space-x-8 text-xl font-bold">
+        <span className="text-3xl flex font-extrabold">
+          <h1 className={`${theme === 'light' ? 'text-gray-900' : 'text-blue-100'} font-poppins `}>LinKar</h1>
+          <h1 className="text-[#f0a500] ">Soe</h1>
+        </span>
+
+        {/* Mobile Menu Icon */}
+        <div className="xl:hidden">
+  <MenuIcon
+    sx={{
+      color: theme === "light" ? "#100259" : "#fafafa",
+      fontSize: "2.5rem",
+      cursor: "pointer",
+      transition: "color 0.3s",
+      "&:hover": {
+        color: theme === "light" ? "#15036a" : "#cccccc",
+      },
+    }}
+    onClick={toggleMenu}
+    aria-label="Menu"
+  />
+  {menuOpen && (
+    <ul
+      className={`absolute z-50 w-[90%] mx-auto top-16 left-0 right-0 ${
+        theme === "light"
+          ? "bg-white text-gray-900"
+          : "bg-gray-900 text-white"
+      } p-6 rounded-lg space-y-4 text-center shadow-lg animate-slide-down`}
+    >
+      {["About Me", "Skills", "Projects", "Contact Me"].map((section) => (
+        <li key={section}>
+          <a
+            href={`#${section.toLowerCase().replace(/\s+/g, "-")}`}
+            className={`block cursor-pointer hover:underline transition-all text-lg 
+              ${
+                theme === "light"
+                  ? "hover:text-[#100259] text-gray-900"
+                  : "hover:text-gray-300 text-white"
+              }`}
+            onClick={() => setMenuOpen(false)}
+          >
+            {section}
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+</div>
+
+        {/* Desktop Navigation */}
+        <ul className="hidden xl:flex space-x-6 text-lg font-medium">
           {["About Me", "Skills", "Projects", "Contact Me"].map((section) => (
             <li key={section}>
               <a
                 href={`#${section.toLowerCase().replace(/\s+/g, "-")}`}
                 className={`cursor-pointer hover:underline transition-all 
                   ${
-                    localTheme === "light"
+                    theme === "light"
                       ? "hover:text-[#100259]"
                       : "hover:text-gray-300"
                   }`}
@@ -61,32 +100,34 @@ const Header: React.FC = () => {
             </li>
           ))}
         </ul>
-        <span className="space-x-6 hidden xl:flex items-center">
-          {/* Theme Icon and button */}
-          <span className="flex  items-center space-x-3">
+
+        {/* Theme Toggle and Resume Button */}
+        <span className="space-x-4 hidden xl:flex items-center">
+          {/* Theme Toggle */}
+          <span className="flex items-center space-x-2">
             <i
               className={`${
-                localTheme === "light" ? "text-[#100259]" : "text-gray-300"
-              }  h-[30px] `}
+                theme === "light" ? "text-[#100259]" : "text-gray-300"
+              } h-[28px]`}
             >
               <LightIcon />
             </i>
 
             <button
               onClick={changeTheme}
-              className={`relative w-[60px] border h-[30px]  rounded-full p-1 transition-all duration-300 ease-in-out 
+              className={`relative w-[50px] border h-[26px] rounded-full p-1 transition-all duration-300 ease-in-out 
                 ${
-                  localTheme === "light"
+                  theme === "light"
                     ? "bg-blue-200 border-[#100259]"
                     : "bg-gray-700 border-gray-600"
                 }`}
             >
-              <div className=" h-full w-full relative">
+              <div className="h-full w-full relative">
                 <span
                   className={`absolute top-1/2 transform -translate-y-1/2 h-full aspect-square rounded-full bg-[#100259] transition-transform duration-500 ease-in-out 
                   ${
-                    localTheme === "light"
-                      ? "left-0 animate-slide-left "
+                    theme === "light"
+                      ? "left-0 animate-slide-left"
                       : "right-0 animate-slide-right bg-slate-300"
                   }`}
                 ></span>
@@ -95,50 +136,35 @@ const Header: React.FC = () => {
 
             <i
               className={`${
-                localTheme === "light" ? "text-[#100259]" : "text-gray-300"
-              }  h-[30px] `}
+                theme === "light" ? "text-[#100259]" : "text-gray-300"
+              } h-[28px]`}
             >
               <DarkIcon />
             </i>
           </span>
 
-          {/* resume button */}
+          {/* Resume Download Button */}
           <Button
             variant="contained"
             endIcon={<DownloadIcon />}
             sx={{
-              display: { xs: "none", sm: "none", md: "none", xl: "flex" },
-
               backgroundColor: "#100259",
               color: "white",
-              padding: "10px 16px",
-              borderRadius: "8px",
+              padding: "8px 12px",
+              borderRadius: "6px",
               fontWeight: "bold",
               textTransform: "uppercase",
-              "&:hover": "#08002b",
-              "&:active": "#090a14",
-
+              fontSize: "0.875rem",
+              "&:hover": {
+                backgroundColor: "#08002b",
+              },
               transition: "all 0.3s ease-in-out",
             }}
-
             onClick={handleDownload}
           >
             Resume
           </Button>
         </span>
-        <MenuIcon
-          sx={{
-            display: { xs: "block", xl: "none" },
-            color: localTheme === "light" ? "#100259" : "#fafafa",
-            fontSize: "3rem",
-            cursor: "pointer",
-            transition: "color 0.3s",
-            "&:hover": {
-              color: localTheme === "light" ? "#15036a" : "#cccccc",
-            },
-          }}
-          aria-label="Menu"
-        />
       </nav>
     </section>
   );

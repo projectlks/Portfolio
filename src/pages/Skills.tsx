@@ -10,6 +10,7 @@ import Icon from "../components/Icon";
 import { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
+import { useTheme } from "../hooks/useTheme";
 
 export default function Icons() {
   useEffect(() => {
@@ -21,11 +22,13 @@ export default function Icons() {
     });
   }, []);
 
+  const {theme} = useTheme()
+
   return (
-    <section className=" bg-gradient-to-tr w-full overflow-hidden from-[#100259]  to-[#1a1a7a] ">
+    <section className={` bg-gradient-to-tr w-full overflow-hidden border-y ${theme === 'light' ? 'from-[#100259]  to-[#1a1a7a]' : 'from-[#000] to-[#0d0439] '} `}>
       <div
         id="skills"
-        className="mt-8 min-h-screen py-[100px]  md:w-[80%] select-none xl:w-2/3 mx-auto w-full "
+        className="mt-8 min-h-screen py-[100px]  2xl:w-[2/3] md:w-[80%] select-none  mx-auto w-full "
       >
         <h2
           data-aos="zoom-out"
@@ -41,6 +44,7 @@ export default function Icons() {
             img={<img src={html} alt="HTML Icon" className="w-[70%]" />}
             className="bg-[#f06529]"
             name="HTML"
+            skill={70} // Example skill level for HTML
           />
 
           {/* CSS Icon */}
@@ -48,6 +52,7 @@ export default function Icons() {
             img={<img src={css} alt="CSS Icon" className="w-[70%]" />}
             className="bg-[#264de4]"
             name="CSS"
+            skill={85} // Example skill level for CSS
           />
 
           {/* JavaScript Icon */}
@@ -55,6 +60,7 @@ export default function Icons() {
             img={<img src={js} alt="JavaScript Icon" />}
             className="bg-[#f7e018]"
             name="JavaScript"
+            skill={70} // Example skill level for JavaScript
           />
 
           {/* React Icon */}
@@ -62,16 +68,17 @@ export default function Icons() {
             img={<img src={react} alt="React Icon" />}
             className="bg-[#ffffff]"
             name="React"
+            skill={85} // Example skill level for React
           />
 
           {/* Git Icon */}
           <div
             data-aos="zoom-in"
-            className="w-[80%] rounded-2xl shadow-md md:bg-transparent md:shadow-none bg-[#0503032e] flex justify-center aspect-square items-center "
+            className="w-[80%] rounded-2xl shadow-md md:bg-transparent md:shadow-none bg-[#0503032e] flex justify-center aspect-square items-center"
           >
-            <div className="flex aspect-square justify-center items-center ">
+            <div className="flex aspect-square justify-center items-center">
               <div className="w-[100px] md:w-[125px] origin-bottom-right rotate-45 aspect-square flex justify-center items-center relative -left-1/2 -bottom-1/3 mx-auto rounded-md cursor-pointer transition-all group">
-                <span className="absolute inset-0 bg-[#f1502f] origin-right group-hover:rotate-[45deg] rounded-xl transition-transform duration-300 ease-in-out transform "></span>
+                <span className="absolute inset-0 bg-[#f1502f] origin-right group-hover:rotate-[45deg] rounded-xl transition-transform duration-300 ease-in-out transform"></span>
                 <span className="relative flex justify-center items-center origin-center w-full h-full border-2 border-[#9c9c9c77] duration-300 group-hover:bg-[#9c9c9c77] group-hover:backdrop-blur-sm rounded-xl">
                   <img
                     src={git}
@@ -88,6 +95,7 @@ export default function Icons() {
             img={<img src={git} alt="Git Icon" className="w-[70%]" />}
             className="bg-[#000]"
             name="Git"
+            skill={75} // Example skill level for Git
           />
 
           {/* GitHub Icon */}
@@ -95,6 +103,7 @@ export default function Icons() {
             img={<img src={github} alt="GitHub Icon" className="w-[70%]" />}
             className="bg-[#000]"
             name="GitHub"
+            skill={70} // Example skill level for GitHub
           />
 
           {/* TypeScript Icon */}
@@ -102,6 +111,7 @@ export default function Icons() {
             img={<img src={ts} alt="TypeScript Icon" />}
             className="bg-[#007acc]"
             name="TypeScript"
+            skill={80} // Example skill level for TypeScript
           />
 
           {/* Tailwind CSS Icon */}
@@ -111,6 +121,7 @@ export default function Icons() {
             }
             className="bg-[#f9fafb] border border-[#9c9c9c77]"
             name="Tailwind CSS"
+            skill={90} // Example skill level for Tailwind CSS
           />
         </div>
       </div>

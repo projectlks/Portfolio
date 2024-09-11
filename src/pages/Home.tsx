@@ -37,14 +37,14 @@ const Home: React.FC = () => {
   const textColor = `
    ${
      theme === "light"
-       ? "text-[#100259] font-extrabold"
-       : "text-[#f0a500] font-extrabold"
-   } transition-all duration-300 `;
+       ? "text-[#100259] "
+       : "text-[#f0a500] "
+   } transition-all duration-300 font-extrabold font-poppins`;
 
   return (
     <section id="home" className={`min-h-screen mt-[100px] `}>
       {/* Main Content Section */}
-      <div className="flex flex-col  items-center min-h-screen justify-center">
+      <div className="flex flex-col  items-center  min-h-screen justify-center">
         {/* Hero Section */}
         <div className="flex flex-col-reverse    xl:flex-row w-full md:w-[90%] mx-auto px-4 xl:px-8  xl:items-center items-center justify-between">
           {/* Text Content */}
@@ -54,7 +54,7 @@ const Home: React.FC = () => {
             className="w-full xl:w-1/2 mb-6 md:mb-0"
           >
             <header
-              className={`md:space-y-6 transition-all font-poppins font-semibold ${
+              className={`md:space-y-6 transition-all font-space font-semibold ${
                 theme === "light" ? "text-gray-900" : "text-blue-100"
               } space-y-3 text-[20px] middle:text-[32px] xs:text-2xl sm:text-4xl 500:text-5xl md:text-6xl 2xl:text-7xl font-Space mb-6`}
             >
@@ -92,16 +92,22 @@ const Home: React.FC = () => {
 
           {/* Image Section */}
           <div
-            data-aos="zoom-in"
-            className="w-full  aspect-square md:w-2/3 xl:w-1/2 p-4 md:p-8 flex justify-center"
+          
+            className={`w-full  ${
+          theme === "light" ? "bg-transparent" : " bg-gradient-to-tr from-blue-100 to-blue-300"
+        } aspect-square md:w-2/3 xl:w-1/2 p-4 md:p-8 flex justify-center transition-all rounded-xl`}
           >
-            <i
+           <span   data-aos="zoom-in" className=" block w-full h-full ">
+           <i
               className={`transition-all ${
-                theme === "light" ? "text-[#100259]" : "text-[#e3bf71]"
+                theme === "light" ? "text-[#100259]" : "text-gray-900"
               } rounded-xl`}
             >
+
+{/* text-[#e3bf71] text-[#f0ffff]*/}
               {device}
             </i>
+           </span>
           </div>
         </div>
         <SocialMediaLinks />

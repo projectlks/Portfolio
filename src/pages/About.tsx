@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import aboutMe from "../assets/svg/aboutMe.svg";
+import AboutIcon from "../assets/svg/AboutIcon";
 import { Tilt } from "@jdion/tilt-react";
 import Aos from "aos";
+import { useTheme } from "../hooks/useTheme";
 
 const About: React.FC = () => {
   useEffect(() => {
@@ -10,34 +11,46 @@ const About: React.FC = () => {
     });
   }, []);
 
+  const { theme } = useTheme();
+
   return (
     <section
       id="about-me"
       className="flex flex-col justify-center overflow-hidden  py-20 xl:py-0 items-center min-h-screen w-[90%] mx-auto xl:flex-row"
     >
-      <div data-aos="flip-left" className="w-full xl:w-[40%]  ">
+      <div
+       
+        className={`w-full xl:w-[40%] rounded-xl transition-all ${
+          theme === "light" ? "bg-transparent" : " bg-gradient-to-tr from-blue-100 to-blue-300"
+        }`}
+      >
+        <span  data-aos="flip-left" className="block w-full h-full ">
         <Tilt style={{ transformStyle: "preserve-3d" }}>
-          <img
-            style={{ transform: "translateZ(-10px)" }}
-            src={aboutMe}
-            alt="About Me"
-            className="w-full mx-auto"
-          />
+          <i
+         
+            className={`${
+              theme === "light" ? "text-[#100259]" : "text-gray-900"
+            } `}
+          >
+            <AboutIcon />
+          </i>
         </Tilt>
-        {/* <img src={aboutMe} alt="About Me" className="w-full mx-auto" /> */}
+        </span>
+      
       </div>
-      <div className="w-full h-auto flex flex-col justify-start  xl:w-[60%] mx-auto xl:px-20">
+      <div
+        className={`w-full ${
+          theme === "light" ? "text-gray-900" : "text-gray-100"
+        } h-auto flex flex-col justify-start  xl:w-[60%] mx-auto xl:px-20`}
+      >
         <h2
           data-aos="zoom-in"
           className="text-5xl xl:text-7xl my-10 font-semibold font-poppins  text-center  flex items-center justify-start space-x-5"
         >
           <span>About</span>
-          <span className="font-extrabold">Me</span>
+          <span className={` font-extrabold ${theme === 'light' ? 'text-gray-900' : 'text-[#f0a500]'}`}>Me</span>
         </h2>
-        <p
-          data-aos="zoom-in"
-          className=" text-xl leading-relaxed text-gray-700 xl:text-2xl"
-        >
+        <p data-aos="zoom-in" className=" text-xl leading-relaxed  xl:text-2xl">
           As a frontend developer, I create engaging and user-friendly web
           experiences. I focus on writing clean, maintainable code and using
           modern design systems to ensure consistency and accessibility. My
@@ -46,7 +59,7 @@ const About: React.FC = () => {
         </p>
         <p
           data-aos="zoom-in"
-          className="mt-4 text-xl leading-relaxed text-gray-700 xl:text-2xl"
+          className="mt-4 text-xl leading-relaxed  xl:text-2xl"
         >
           I am passionate about continuous learning and staying up-to-date with
           the latest industry trends. By integrating best practices and
@@ -55,7 +68,7 @@ const About: React.FC = () => {
         </p>
         <p
           data-aos="zoom-in"
-          className="mt-4 text-xl leading-relaxed text-gray-700 xl:text-2xl"
+          className="mt-4 text-xl leading-relaxed  xl:text-2xl"
         >
           With a strong attention to detail and an eye for design, I ensure that
           every project I work on is optimized for performance, accessibility,

@@ -9,7 +9,7 @@ import up from "./assets/svg/up.svg";
 
 export default function App() {
   return (
-    <>
+    <div className="w-screen overflow-hidden">
       <Header />
 
       <Home />
@@ -35,6 +35,6 @@ export default function App() {
           </p>
         </a>
       </span>
-    </>
+    </div>
   );
 }

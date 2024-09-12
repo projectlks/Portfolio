@@ -68,7 +68,7 @@ export default function Icons() {
             img={<img src={react} alt="React Icon" />}
             className="bg-[#ffffff]"
             name="React"
-            skill={85} // Example skill level for React
+            skill={90} // Example skill level for React
           />
 
           {/* Git Icon */}

@@ -2,13 +2,28 @@ import React, { useState } from "react";
 
 import Menu from "../assets/svg/MenuIcon";
 import { useTheme } from "../hooks/useTheme";
-import ThemeButton from "./themeButton";
+import ThemeButton from "../components/ThemeButton";
 import ResumeButton from "./ResumeButton";
-import MenuItem from "./menuItem";
+import MenuItem from "../components/MenuItem";
+import SkillsIcon from "../assets/svg/SkillsIcon";
+import HomeIcon from "../assets/svg/HomeIcon";
+import AboutMeIcon from "../assets/svg/AboutMeIcon";
+import Projects from "../assets/svg/Projects";
 
+interface Menu {
+  name: string;
+  icon: JSX.Element;
+}
 const Header: React.FC = () => {
   const { theme } = useTheme();
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const menu: Menu[] = [
+    { name: "Home", icon: <HomeIcon /> },
+    { name: "Skills", icon: <SkillsIcon /> },
+    { name: "About ME", icon: <AboutMeIcon /> },
+    { name: "Projects", icon: <Projects /> },
+    { name: "Contact Me", icon: <Projects /> },
+  ];
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -36,8 +51,8 @@ const Header: React.FC = () => {
         </span>
 
         {/* Mobile Menu Icon */}
-        <div className="xl:hidden ">
-          <span className="h-[30px]">
+        <div className="xl:hidden flex ">
+          <span className="h-[30px] z-20">
             <i
               onClick={toggleMenu}
               className={`transition-al w-[30px] h-[30px] ${
@@ -49,42 +64,67 @@ const Header: React.FC = () => {
           </span>
 
           <span
-        
-            className={` ${
-              menuOpen
-                ? " translate-x-0 top-0 left-0 opacity-100"
-                : "bg-transparent transform translate-x-full opacity-0"
-            } flex   z-10 fixed w-full h-screen  transition-all  bg-[#00000030]`}
+            className={`${
+              menuOpen ? " opacity-100 " : " opacity-0 "
+            } flex z-10 fixed w-full h-screen  top-0 left-0 justify-end transition-all bg-[#00000030]`}
           >
-            <span className="w-[30%] bg-transparent"   onClick={()=>setMenuOpen(false)} ></span>
             <ul
-              className={` w-[70%]  ${
+              className={`w-[80%] md:w-1/2 ${
                 theme === "light"
                   ? "bg-white text-gray-900"
                   : "bg-gray-900 text-white"
-              } p-3 rounded-lg absolute top-0  z-20 right-0 h-full space-y-4 text-left shadow-lg transition-all 
-           `}
+              } ${
+                menuOpen ? "-left-0 opacity-100" : "-left-full opacity-0"
+              } py-3 rounded-r-lg absolute top-0 z-20 left-0 h-full text-left shadow-lg transition-all`}
+              aria-hidden={!menuOpen}
             >
+              <li className="flex justify-center relative border-b items-center h-28">
+                <span className="text-3xl flex font-extrabold">
+                  <h1
+                    className={`${
+                      theme === "light" ? "text-gray-900" : "text-blue-100"
+                    } font-poppins`}
+                  >
+                    LinKar
+                  </h1>
+                  <h1 className="text-[#f0a500]">Soe</h1>
+                </span>
 
-              <li className="text-7xl">X</li>
-              {["Home", "Skills", "About Me", "Projects", "Contact Me"].map(
-                (section) => (
-                  <MenuItem
-                    section={section}
-                    setMenuOpen={setMenuOpen}
-                    key={section}
-                  />
-                )
-              )}
-
-              <li className=" px-4 py-2 rounded">
-                <ThemeButton />
+                <span className="h-[30px] absolute top-2 right-2">
+                  <i
+                    onClick={toggleMenu}
+                    className={`transition-al w-[30px] h-[30px] ${
+                      theme === "light" ? "text-[#100259]" : "text-[#e3bf71]"
+                    } rounded-xl`}
+                  >
+                    <Menu />
+                  </i>
+                </span>
               </li>
-
-              <li className=" px-4 py-2 rounded">
-                <ResumeButton />
+              {menu.map((section) => (
+                <MenuItem
+                  section={section.name}
+                  setMenuOpen={setMenuOpen}
+                  key={section.name}
+                  icon={section.icon}
+                />
+              ))}
+              <li className="  mx-6 py-3 ">
+               <span className="px-4 py-2  block">
+               <ThemeButton />
+               </span>
+              </li>
+              <li className="  mx-6 py-3 ">
+              <span className="px-4 py-2 block">
+              <ResumeButton />
+              </span>
               </li>
             </ul>
+            <span
+              className="w-[20%] md:w-1/2"
+              onClick={() => setMenuOpen(false)}
+              aria-label="Close menu"
+            ></span>
           </span>
         </div>
 

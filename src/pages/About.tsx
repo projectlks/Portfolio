@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import AboutIcon from "../assets/svg/AboutIcon";
+import AboutIcon from "../assets/svg/AboutIconPage";
 import { Tilt } from "@jdion/tilt-react";
 import Aos from "aos";
 import { useTheme } from "../hooks/useTheme";

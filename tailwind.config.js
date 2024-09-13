@@ -32,7 +32,8 @@ export default {
       Space : ['Space Grotesk', 'sans-serif']
     },
     screens: {
-      'xs': '320px',   // Custom extra-small breakpoint
+      'xs': '320px',
+      '350' : '350px',   // Custom extra-small breakpoint
       'middle': '400px',
       'sm': '420px',
       '500' : '520px',   // Custom small breakpoint
@@ -41,6 +42,7 @@ export default {
       'xl': '1280px',  // Extra-large breakpoint
       '2xl': '1600px', // 2xl breakpoint
     },
+
   
   },
   plugins: [],

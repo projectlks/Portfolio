@@ -52,7 +52,7 @@ const Header: React.FC = () => {
 
         {/* Mobile Menu Icon */}
         <div className="xl:hidden flex ">
-          <span className="h-[30px] z-20">
+          <span className="h-[50px] aspect-square flex justify-center items-center fixed top-4 right-5 bg-[#00000030] rounded-full p-3 z-20">
             <i
               onClick={toggleMenu}
               className={`transition-al w-[30px] h-[30px] ${
@@ -66,7 +66,7 @@ const Header: React.FC = () => {
           <span
             className={`${
               menuOpen ? " opacity-100 " : " opacity-0 "
-            } flex z-10 fixed w-full h-screen  top-0 left-0 justify-end transition-all bg-[#00000030]`}
+            } flex z-10 fixed w-full h-screen  top-0 left-0 justify-end transition-all active:bg-gray-700 bg-[#00000030]`}
           >
             <ul
               className={`w-[80%] md:w-1/2 ${
@@ -75,7 +75,7 @@ const Header: React.FC = () => {
                   : "bg-gray-900 text-white"
               } ${
                 menuOpen ? "-left-0 opacity-100" : "-left-full opacity-0"
-              } py-3 rounded-r-lg absolute top-0 z-20 left-0 h-full text-left shadow-lg transition-all`}
+              } py-3 rounded-r-lg absolute top-0 z-20  h-full text-left shadow-lg transition-all`}
               aria-hidden={!menuOpen}
             >
               <li className="flex justify-center relative border-b items-center h-28">
@@ -109,13 +109,13 @@ const Header: React.FC = () => {
                   icon={section.icon}
                 />
               ))}
-              <li className="  mx-6 py-3 ">
-               <span className="px-4 py-2  block">
+              <li className="  mx-4 py-2 ">
+               <span className="px-2 py-2  block">
                <ThemeButton />
                </span>
               </li>
-              <li className="  mx-6 py-3 ">
-              <span className="px-4 py-2 block">
+              <li className="  mx-4 py-2 ">
+              <span className="px-2 py-2 block">
               <ResumeButton />
               </span>
               </li>

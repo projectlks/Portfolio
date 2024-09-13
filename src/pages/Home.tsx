@@ -56,7 +56,7 @@ const Home: React.FC = () => {
             <header
               className={`md:space-y-6 transition-all font-space font-semibold ${
                 theme === "light" ? "text-gray-900" : "text-blue-100"
-              } space-y-3 text-[20px] middle:text-[32px] xs:text-2xl sm:text-4xl 500:text-5xl md:text-6xl 2xl:text-7xl font-Space mb-6`}
+              } space-y-3 text-[20px] xl:mt-0 mt-[40px] middle:text-[32px] 350:text-[30px] xs:text-2xl sm:text-4xl 500:text-5xl md:text-6xl 2xl:text-7xl font-Space mb-6`}
             >
               <h1 className="flex space-x-4">
                 <span>Hello, I'm</span>
@@ -64,7 +64,7 @@ const Home: React.FC = () => {
               </h1>
               <h1 className="flex space-x-4">
                 <span className={textColor}>Frontend</span>
-                <span className="font-[MateusBold]  text-[20px] middle:text-[36px] xs:text-2xl sm:text-5xl 500:text-5xl md:text-7xl 2xl:text-8xl">Developer</span>
+                <span className="font-[MateusBold]  text-[20px] 350:text-[32px] middle:text-[36px] xs:text-2xl sm:text-5xl 500:text-5xl md:text-7xl 2xl:text-8xl">Developer</span>
               </h1>
               <h1 className="flex space-x-4">
                 <span>Based in</span>
@@ -78,6 +78,7 @@ const Home: React.FC = () => {
               }`}
             >
               <p className="leading-relaxed">
+              {width}
                 Welcome to my portfolio! I'm Linkar Soe, a passionate Frontend
                 Developer based in Myanmar. With a keen eye for design and a
                 love for creating engaging user experiences, I specialize in

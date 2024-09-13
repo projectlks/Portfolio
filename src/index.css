@@ -20,7 +20,18 @@ body::-webkit-scrollbar-thumb {
 }
 
 
+.bg-radial-circle::after {
+    /* background: radial-gradient(circle, #bfdbfe, #100259); */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    margin: 0 auto;
+    width: 90%;
 
+  }
 
 
 body::-webkit-scrollbar-track {

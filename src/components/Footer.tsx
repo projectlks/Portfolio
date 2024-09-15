@@ -33,7 +33,7 @@ export default function Footer() {
           <p
             data-aos="flip-left"
             data-aos-delay="1000"
-            className=" px-4 py-2 text-lg md:text-2xl text-center overflow-hidden whitespace-nowrap  bg-blue-50 inline-block"
+            className=" px-4 py-2 text-lg md:text-2xl text-center overflow-hidden whitespace-nowrap  bg-blue-200 border border-[#100259] inline-block"
           >
             Looking forward to connect with You
           </p>

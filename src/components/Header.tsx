@@ -9,6 +9,7 @@ import SkillsIcon from "../assets/svg/SkillsIcon";
 import HomeIcon from "../assets/svg/HomeIcon";
 import AboutMeIcon from "../assets/svg/AboutMeIcon";
 import Projects from "../assets/svg/Projects";
+import ContactMeIcon from "../assets/svg/ContactMeIcon";
 
 interface Menu {
   name: string;
@@ -17,12 +18,13 @@ interface Menu {
 const Header: React.FC = () => {
   const { theme } = useTheme();
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [isActive, setISActive]  = useState<string>('')
   const menu: Menu[] = [
     { name: "Home", icon: <HomeIcon /> },
     { name: "Skills", icon: <SkillsIcon /> },
     { name: "About ME", icon: <AboutMeIcon /> },
     { name: "Projects", icon: <Projects /> },
-    { name: "Contact Me", icon: <Projects /> },
+    { name: "Contact Me", icon: <ContactMeIcon /> },
   ];
 
   const toggleMenu = () => {
@@ -39,16 +41,18 @@ const Header: React.FC = () => {
             : "bg-gradient-to-tr from-gray-900 to-black text-white border border-blue-900 border-opacity-80"
         }`}
       >
-        <span className="text-3xl flex font-extrabold">
-          <h1
-            className={`${
-              theme === "light" ? "text-gray-900" : "text-blue-100"
-            } font-poppins`}
-          >
-            LinKar
-          </h1>
-          <h1 className="text-[#f0a500]">Soe</h1>
-        </span>
+        <a href="#home">
+          <span className="text-3xl flex font-extrabold">
+            <h1
+              className={`${
+                theme === "light" ? "text-gray-900" : "text-blue-100"
+              } font-poppins`}
+            >
+              LinKar
+            </h1>
+            <h1 className="text-[#f0a500]">Soe</h1>
+          </span>
+        </a>
 
         {/* Mobile Menu Icon */}
         <div className="xl:hidden flex ">
@@ -65,17 +69,19 @@ const Header: React.FC = () => {
 
           <span
             className={`${
-              menuOpen ? " opacity-100 " : " opacity-0 "
-            } flex z-10 fixed w-full h-screen  top-0 left-0 justify-end transition-all active:bg-gray-700 bg-[#00000030]`}
+              menuOpen ? "-left-0 opacity-100" : "-left-full opacity-0"
+            } flex z-10 fixed w-full h-screen  top-0  justify-end transition-all active:bg-gray-700 bg-[#00000030]`}
           >
             <ul
               className={`w-[80%] md:w-1/2 ${
                 theme === "light"
                   ? "bg-white text-gray-900"
                   : "bg-gray-900 text-white"
-              } ${
-                menuOpen ? "-left-0 opacity-100" : "-left-full opacity-0"
-              } py-3 rounded-r-lg absolute top-0 z-20  h-full text-left shadow-lg transition-all`}
+              } 
+              
+              ${menuOpen ? "-left-0 opacity-100" : "-left-full opacity-0"}
+              
+              py-3 rounded-r-lg absolute top-0 z-20  h-full text-left shadow-lg transition-all`}
               aria-hidden={!menuOpen}
             >
               <li className="flex justify-center relative border-b items-center h-28">
@@ -107,17 +113,19 @@ const Header: React.FC = () => {
                   setMenuOpen={setMenuOpen}
                   key={section.name}
                   icon={section.icon}
+                  isActive = {isActive}
+                  setISActive={setISActive}
                 />
               ))}
               <li className="  mx-4 py-2 ">
-               <span className="px-2 py-2  block">
-               <ThemeButton />
-               </span>
+                <span className="px-2 py-2  block">
+                  <ThemeButton />
+                </span>
               </li>
               <li className="  mx-4 py-2 ">
-              <span className="px-2 py-2 block">
-              <ResumeButton />
-              </span>
+                <span className="px-2 py-2 block">
+                  <ResumeButton />
+                </span>
               </li>
             </ul>
             <span
@@ -129,13 +137,15 @@ const Header: React.FC = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <ul className="hidden xl:flex  ">
+        <ul className="hidden xl:flex  space-x-4 ">
           {["Home", "Skills", "About Me", "Projects", "Contact Me"].map(
             (section) => (
               <MenuItem
                 section={section}
                 setMenuOpen={setMenuOpen}
                 key={section}
+                isActive = {isActive}
+                setISActive={setISActive}
               />
             )
           )}

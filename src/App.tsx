@@ -15,8 +15,6 @@ export default function App() {
       <Home />
       <Skills />
 
-      {/* bg-gradient-to-tr from-[#100259]  to-[#1a1a7a] */}
-
       <About />
       <Projects />
 

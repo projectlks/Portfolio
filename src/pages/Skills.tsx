@@ -35,7 +35,7 @@ export default function Icons() {
           className="text-3xl xl:text-7xl font-semibold font-poppins mb-20 text-center text-[#fff] flex items-center justify-center space-x-3"
         >
           <span>My</span>
-          <span className="font-extrabold">Skills</span>
+          <span className={`font-extrabold ${theme === 'light' ? 'text-[#100259]' : 'text-[#f0a500]'}` }>Skills</span>
         </h2>
         <div className="grid grid-cols-2  md:grid-cols-3 xl:grid-cols-4 transition-all justify-items-center md:gap-x-6 gap-y-10">
           {/* HTML Icon */}

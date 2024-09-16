@@ -1,35 +1,25 @@
 import React, { useState } from "react";
 
-import Menu from "../assets/svg/MenuIcon";
 import { useTheme } from "../hooks/useTheme";
 import ThemeButton from "../components/ThemeButton";
 import ResumeButton from "./ResumeButton";
 import MenuItem from "../components/MenuItem";
-import SkillsIcon from "../assets/svg/SkillsIcon";
-import HomeIcon from "../assets/svg/HomeIcon";
-import AboutMeIcon from "../assets/svg/AboutMeIcon";
-import Projects from "../assets/svg/Projects";
-import ContactMeIcon from "../assets/svg/ContactMeIcon";
-
-interface Menu {
-  name: string;
-  icon: JSX.Element;
+import MobileMenu from "./MobileMenu";
+export interface Position {
+  left: number;
+  width: number;
 }
+
 const Header: React.FC = () => {
   const { theme } = useTheme();
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const [isActive, setISActive]  = useState<string>('')
-  const menu: Menu[] = [
-    { name: "Home", icon: <HomeIcon /> },
-    { name: "Skills", icon: <SkillsIcon /> },
-    { name: "About ME", icon: <AboutMeIcon /> },
-    { name: "Projects", icon: <Projects /> },
-    { name: "Contact Me", icon: <ContactMeIcon /> },
-  ];
+  const [isActive, setISActive] = useState<string>("Home");
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const defaultPosition = { left: 0, width: 0 };
+  const [activePosition, setActivePosition] =
+    useState<Position>(defaultPosition);
+
+    const [hoverPosition, setHoverPosition] = useState<Position>(defaultPosition)
 
   return (
     <section className="w-full  relative">
@@ -55,100 +45,54 @@ const Header: React.FC = () => {
         </a>
 
         {/* Mobile Menu Icon */}
-        <div className="xl:hidden flex ">
-          <span className="h-[50px] aspect-square flex justify-center items-center fixed top-4 right-5 bg-[#00000030] rounded-full p-3 z-20">
-            <i
-              onClick={toggleMenu}
-              className={`transition-al w-[30px] h-[30px] ${
-                theme === "light" ? "text-[#100259]" : "text-[#e3bf71]"
-              } rounded-xl`}
-            >
-              <Menu />
-            </i>
-          </span>
 
-          <span
-            className={`${
-              menuOpen ? "-left-0 opacity-100" : "-left-full opacity-0"
-            } flex z-10 fixed w-full h-screen  top-0  justify-end transition-all active:bg-gray-700 bg-[#00000030]`}
-          >
-            <ul
-              className={`w-[80%] md:w-1/2 ${
-                theme === "light"
-                  ? "bg-white text-gray-900"
-                  : "bg-gray-900 text-white"
-              } 
-              
-              ${menuOpen ? "-left-0 opacity-100" : "-left-full opacity-0"}
-              
-              py-3 rounded-r-lg absolute top-0 z-20  h-full text-left shadow-lg transition-all`}
-              aria-hidden={!menuOpen}
-            >
-              <li className="flex justify-center relative border-b items-center h-28">
-                <span className="text-3xl flex font-extrabold">
-                  <h1
-                    className={`${
-                      theme === "light" ? "text-gray-900" : "text-blue-100"
-                    } font-poppins`}
-                  >
-                    LinKar
-                  </h1>
-                  <h1 className="text-[#f0a500]">Soe</h1>
-                </span>
-
-                <span className="h-[30px] absolute top-2 right-2">
-                  <i
-                    onClick={toggleMenu}
-                    className={`transition-al w-[30px] h-[30px] ${
-                      theme === "light" ? "text-[#100259]" : "text-[#e3bf71]"
-                    } rounded-xl`}
-                  >
-                    <Menu />
-                  </i>
-                </span>
-              </li>
-              {menu.map((section) => (
-                <MenuItem
-                  section={section.name}
-                  setMenuOpen={setMenuOpen}
-                  key={section.name}
-                  icon={section.icon}
-                  isActive = {isActive}
-                  setISActive={setISActive}
-                />
-              ))}
-              <li className="  mx-4 py-2 ">
-                <span className="px-2 py-2  block">
-                  <ThemeButton />
-                </span>
-              </li>
-              <li className="  mx-4 py-2 ">
-                <span className="px-2 py-2 block">
-                  <ResumeButton />
-                </span>
-              </li>
-            </ul>
-            <span
-              className="w-[20%] md:w-1/2"
-              onClick={() => setMenuOpen(false)}
-              aria-label="Close menu"
-            ></span>
-          </span>
-        </div>
+        <MobileMenu
+          setMenuOpen={setMenuOpen}
+          menuOpen={menuOpen}
+          isActive={isActive}
+          setISActive={setISActive}
+        />
 
         {/* Desktop Navigation */}
-        <ul className="hidden xl:flex  space-x-4 ">
+        <ul className="hidden xl:flex relative ">
           {["Home", "Skills", "About Me", "Projects", "Contact Me"].map(
             (section) => (
               <MenuItem
                 section={section}
                 setMenuOpen={setMenuOpen}
                 key={section}
-                isActive = {isActive}
+                isActive={isActive}
                 setISActive={setISActive}
+                setActivePosition={setActivePosition}
+                setHoverPosition = {setHoverPosition}
               />
             )
           )}
+          {/* active backGround */}
+          <li
+            className={`absolute h-full -z-10   rounded-md transition-all duration-300 ${
+              theme === "light" ? "bg-[#100259] " : "bg-blue-100 "
+            } `}
+            style={{
+              left: `${activePosition.left}px`,
+              width: `${activePosition.width}px`,
+            }}
+          >
+            <span className="h-full "></span>
+          </li>
+
+          {/* hover backGround */}
+          <li
+            className={`absolute h-full -z-10 w-[100px]  m-0 rounded-md transition-all duration-300 ${
+              theme === "light" ? "bg-[#100259] " : "bg-blue-100 "
+            } `}
+            style={{
+              left: `${hoverPosition.left}px`,
+              width: `${hoverPosition.width}px`,
+            }}
+          >
+            <span className="h-full "></span>
+          </li>
         </ul>
 
         {/* Theme Toggle and Resume Button */}

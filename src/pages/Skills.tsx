@@ -5,7 +5,7 @@ import css from "../assets/png/css.png";
 import git from "../assets/png/git.png";
 import js from "../assets/png/js.png";
 import ts from "../assets/png/ts.png";
-import tailwind from "../assets/tailwind.png";
+import tailwind from "../assets/png/tailwind.png";
 import Icon from "../components/Icon";
 import { useEffect } from "react";
 import Aos from "aos";
@@ -22,20 +22,32 @@ export default function Icons() {
     });
   }, []);
 
-  const {theme} = useTheme()
+  const { theme } = useTheme();
 
   return (
-    <section className={` bg-gradient-to-tr w-full overflow-hidden border-y ${theme === 'light' ? 'from-[#100259]  to-[#1a1a7a]' : 'from-[#000] to-[#0d0439] '} `}>
+    <section     id="skills"
+      className={` bg-gradient-to-tr w-full overflow-hidden border-y ${
+        theme === "light"
+          ? "from-[#100259]  to-[#1a1a7a]"
+          : "from-[#000] to-[#0d0439] "
+      } `}
+    >
       <div
-        id="skills"
-        className="mt-8 min-h-screen py-[100px]  2xl:w-[2/3] md:w-[80%] select-none  mx-auto w-full "
+    
+        className="mt-8 min-h-screen mb-20 xl:py-[100px]  2xl:w-[2/3] md:w-[80%] select-none  mx-auto w-full "
       >
         <h2
           data-aos="zoom-out"
           className="text-3xl xl:text-7xl font-semibold font-poppins mb-20 text-center text-[#fff] flex items-center justify-center space-x-3"
         >
           <span>My</span>
-          <span className={`font-extrabold ${theme === 'light' ? 'text-[#100259]' : 'text-[#f0a500]'}` }>Skills</span>
+          <span
+            className={`font-extrabold ${
+              theme === "light" ? "text-gray-300" : "text-[#f0a500]"
+            }`}
+          >
+            Skills
+          </span>
         </h2>
         <div className="grid grid-cols-2  md:grid-cols-3 xl:grid-cols-4 transition-all justify-items-center md:gap-x-6 gap-y-10">
           {/* HTML Icon */}
